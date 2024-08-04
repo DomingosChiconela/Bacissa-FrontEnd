@@ -6,11 +6,3 @@
     object-fit: cover;
 }
 
-.bg-overlay {
-
-    width: 100%;
-    background-color: rgba(0,0,0,0.5);
-    position: absolute;
-    top: 4.5%;
-    
-}

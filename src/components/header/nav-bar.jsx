@@ -42,20 +42,11 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
             <NavLink
-              to="/about"
+              to="/residuos"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
-              About
-            </NavLink>
-          </li>
-          <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/services"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-              Services
+             Residuos
             </NavLink>
           </li>
           <li className="mt-4 md:mt-0">
@@ -65,6 +56,15 @@ export const NavBar = () => {
               onClick={toggleMenu}
             >
               Contact
+            </NavLink>
+          </li>
+          <li className="mt-4 md:mt-0">
+            <NavLink
+              to="/about"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+              onClick={toggleMenu}
+            >
+              About
             </NavLink>
           </li>
         </ul>
