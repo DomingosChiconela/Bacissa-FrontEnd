@@ -1,5 +1,11 @@
+import { Header } from "../components/header"
+import { Welcome } from "../components/home/welcome"
+
 export const Home = () => {
     return (
-        <h1>Ola mundo tudo bem</h1>
+        <>
+        <Header/>
+        <Welcome/>
+        </>
     )
 }
