@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import CardFt from '../Media/foto.jpeg';
 import { NumberFormatBase } from 'react-number-format';
 import { motion, AnimatePresence } from 'framer-motion';
