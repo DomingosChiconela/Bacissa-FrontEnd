@@ -94,15 +94,15 @@ export const Cards = () => {
     e.preventDefault();
     const newCardWithId = {
       ...form,
-      id: cards.length + 1, // Simple ID generation
+      id: cards.length + 1,
     };
     const updatedCards = [newCardWithId, ...cards].sort((a, b) => b.id - a.id);
     setCards(updatedCards);
-    setForm({ category: '', price: '', quantity: '', location: '', image: null }); // Reset form fields
+    setForm({ category: '', price: '', quantity: '', location: '', image: null });
     setImagePreview(null);
-    setIsFormOpen(false); // Close the form after submission
-    setShowSuccess(true); // Show success message
-    setTimeout(() => setShowSuccess(false), 3000); // Hide after 4 seconds
+    setIsFormOpen(false); 
+    setShowSuccess(true); 
+    setTimeout(() => setShowSuccess(false), 3000); 
   };
 
   return (
@@ -228,7 +228,7 @@ export const Cards = () => {
       )}
  {cards.map((card) => (
         <div key={card.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-          <Link to={`/residuos/${card.id}`}> {/* Link to the detail page */}
+          <Link to={`/residuos/${card.id}`}> 
             <div className="bg-white rounded-lg shadow-xl overflow-hidden">
               <img src={card.image || CardFt} alt="Product" className="w-full h-48 object-cover" />
               <div className="p-4">
