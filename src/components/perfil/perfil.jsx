@@ -9,7 +9,7 @@ export const Perfil = () => {
   
   const [isEditing, setIsEditing] = useState(false);
   const [perfilData, setPerfilData] = useState({
-    nome: 'João Silva',
+    nome: 'Beto Dias',
     regiao: 'Maputo',
   });
 
