@@ -1,6 +1,7 @@
 import  { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { User } from '@phosphor-icons/react';
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,14 +14,14 @@ export const NavBar = () => {
   const inactiveStyles = "text-white hover:text-blue-600";
 
   return (
-    <nav className="p-4 md:pr-10 relative">
+    <nav className="p-4 md:pr-8 relative">
       <div className="container mx-auto flex justify-between items-center">
         <div className="md:hidden text-white cursor-pointer" onClick={toggleMenu}>
           <FaBars size={20} />
         </div>
 
         <ul
-          className={`fixed top-0 right-0 text-2xl md:text-base w-80 h-full bg-gray-800 flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out md:static md:flex md:flex-row md:space-x-6 md:bg-transparent md:h-auto md:transform-none ${
+          className={`fixed top-0 right-0 text-2xl md:text-base w-80 md:w-full h-full bg-gray-800 flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out md:static md:flex md:flex-row md:space-x-8 md:bg-transparent md:h-auto md:transform-none ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           } z-20`}
         >
@@ -65,6 +66,15 @@ export const NavBar = () => {
               onClick={toggleMenu}
             >
               About
+            </NavLink>
+          </li>
+          <li className="mt-4 md:mt-0">
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+              onClick={toggleMenu}
+            >
+              <User size={20}/>
             </NavLink>
           </li>
         </ul>

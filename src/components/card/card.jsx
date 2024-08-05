@@ -172,7 +172,7 @@ export const Cards = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700">Quantity</label>
+                <label className="block text-gray-700">Quantidade</label>
                 <input
                   type="text"
                   name="quantity"
@@ -183,7 +183,7 @@ export const Cards = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Location</label>
+                <label className="block text-gray-700">Localização</label>
                 <input
                   type="text"
                   name="location"
@@ -194,7 +194,7 @@ export const Cards = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Image</label>
+                <label className="block text-gray-700">Imagem</label>
                 <input
                   type="file"
                   accept="image/*"
