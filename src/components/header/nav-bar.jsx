@@ -52,7 +52,7 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
             <NavLink
-              to="/about"
+              to="/"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
