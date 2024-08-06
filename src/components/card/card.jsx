@@ -237,7 +237,7 @@ export const Cards = () => {
                 <p className="text-gray-700 mb-1">Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}</p>
                 <p className="text-gray-700 mb-4">Localização: {card.location}</p>
                 <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                  Enviar Proposta
+                  Ver detalhes
                 </button>
               </div>
             </div>
