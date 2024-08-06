@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../header";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -17,6 +18,10 @@ export const LoginForm = () => {
   };
 
   return (
+    <div>
+
+   
+        <Header/>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -101,6 +106,7 @@ export const LoginForm = () => {
           </button>
         </form>
       </motion.div>
+    </div>
     </div>
   );
 };
