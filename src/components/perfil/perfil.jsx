@@ -1,34 +1,100 @@
-import { motion } from "framer-motion"
-import Img from "../Media/perfil.jpg";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Img from "../Media/perfil.jpg"; 
 
 
 
 
 export const Perfil = () => {
-    return (
-        <motion.div>
-          <div className="">
-            <img src={Img} alt="" className="w-36 h-36 rounded-full mt-36 items-center "/>
-           <div>
-           <label htmlFor="name" className="block text-black ">Nome Completo</label>
-           <div className="flex items-center border border-slate-900 rounded-2xl  w-40 bg-gray-100">
-           <span id="name" className="text-gray-400 font-light text-center text-sm ml-6">Nome completo</span>
-  </div>
-  </div>
-  <div className="relative">
-    <label htmlFor="location" className="block text-black">Região</label>
-    <div className="flex items-center border border-slate-900 rounded-2xl  w-40 bg-gray-100">
-           <span id="location" className="text-gray-400 font-light text-center text-sm ml-6">Região</span>
-  </div>
-           </div>
-           <button
-    type="submit"
-    className="w-40 bg-cyan-500 text-black text-sm py-1 px-1 rounded-2xl mt-20 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  >
-    Editar Informações
-  </button>
-  </div>
+  
+  const [isEditing, setIsEditing] = useState(false);
+  const [perfilData, setPerfilData] = useState({
+    nome: 'Beto Dias',
+    regiao: 'Maputo',
+  });
 
-        </motion.div>
-    )
-}
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = (novoNome, novaRegiao) => {
+    setPerfilData({ nome: novoNome, regiao: novaRegiao });
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+  };
+
+  const EditForm = () => {
+    const [newNome, setNewNome] = useState(perfilData.nome);
+    const [newRegiao, setNewRegiao] = useState(perfilData.regiao);
+
+    return (
+      <div className="flex flex-col gap-4">
+        <h2>Nome Completo:</h2>
+        <input
+          type="text"
+          value={newNome}
+          onChange={(e) => setNewNome(e.target.value)}
+          placeholder="Nome"
+          className="w-80 p-2 border text-center border-gray-300 rounded-lg"
+        />
+        <h2>Regiao:</h2>
+        <input
+          type="text"
+          value={newRegiao}
+          onChange={(e) => setNewRegiao(e.target.value)}
+          placeholder="Regiao"
+          className="w-80 p-2 border text-center border-gray-300 rounded-lg"
+        />
+        <div className="flex gap-4">
+          <button
+            onClick={() => handleSave(newNome, newRegiao)}
+            className="bg-blue-500 text-white text-base w-32 px-1 py-1 rounded-lg hover:bg-lime-400"
+          >
+            Salvar
+          </button>
+          <button
+            onClick={handleCancel}
+            className="bg-pink-400 text-white text-base w-32 px-1 py-1 rounded-lg hover:bg-orange-300"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const PerfilDisplay = () => (
+   <motion.div>
+    <div className="flex flex-col items-center gap-4">
+      <img src={Img} alt="Perfil" className="w-56 h-56 rounded-full object-cover" />
+      <div className="flex flex-col items-center gap-2">
+        <h2>Nome Completo:</h2>
+        <label className="w-72 px-1 py-1 text-lg text-center font-medium text-gray-600 bg-gray-100 rounded-lg border border-slate-400 ">
+          {perfilData.nome}
+        </label>
+        <h2>Regiao:</h2>
+        <label className="w-72 px-1 py-1 text-lg text-center font-medium text-gray-600 bg-gray-100 rounded-lg border-slate-400 border ">
+          {perfilData.regiao}
+        </label>
+      </div>
+      <button
+        onClick={handleEditClick}
+        className="bg-green-500 w-72 text-white px-1 py-1 rounded-lg hover:bg-green-400 hover:shadow-lg transition-shadow  cursor-pointer"
+      >
+        Editar Informações
+      </button>
+    </div>
+    </motion.div>
+  );
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      {isEditing ? <EditForm /> : <PerfilDisplay />}
+    </div>
+  );
+};
+
+export default Perfil;
