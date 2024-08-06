@@ -39,7 +39,7 @@ export const Welcome = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 2.0, delay: 0.2 }}
-                        className="flex flex-col items-center justify-center pt-16 md:pt-24"
+                        className="flex flex-col items-center justify-center pt-16 md:pt-0 "
                     >
                 <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -50,12 +50,12 @@ export const Welcome = () => {
                 >
                     {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
                 </motion.button>
-                        <h1 className="text-xl md:text-2xl xl:text-3xl font-bold my-2 text-center items-center text-white rounded-lg px-2 h-8">
+                        <h1 className="text-xl md:text-2xl xl:text-4xl font-bold my-0 text-center items-center text-white rounded-lg px-2 h-8">
                             Bem-vindo ao Bacissa
                         </h1>
 
                         <Link to="/residuos">
-                            <button className="flex relative mt-4 md:mt-20 justify-center items-center bg-black/60 text-blue-500 px-6 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition-colors duration-300">
+                            <button className="flex relative mt-4 md:mt-52 justify-center items-center bg-black/60 text-blue-500 px-6 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition-colors duration-300">
                                 <ArrowCircleDown />
                             </button>
                         </Link>
@@ -68,18 +68,26 @@ export const Welcome = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.0 }}
             className="bg-gray-100 py-12">
-                <div className="max-w-6xl mx-auto px-6">
+                <div className=" max-w-6xl  mx-auto px-6">
                     <h2 className="text-center text-2xl md:text-3xl xl:text-4xl font-bold text-gray-800 mb-8">
                         Sobre a Bacissa
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white shadow-lg rounded-lg p-6">
                             <h3 className="text-lg font-semibold mb-2 text-blue-600">
-                                Nossa Missão
+                                O que é o Bacissa
                             </h3>
                             <p className="text-gray-700">
                                 A Bacissa é uma aplicação dedicada à reciclagem de resíduos sólidos.
-                                Nossa missão é promover práticas sustentáveis de gestão de resíduos,
+                                
+                            </p>
+                        </div>
+                        <div className="bg-white shadow-lg rounded-lg p-6">
+                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            Nossa missão
+                            </h3>
+                            <p className="text-gray-700">
+                            Nossa missão é promover práticas sustentáveis de gestão de resíduos,
                                 ajudando indivíduos e organizações a minimizar seu impacto ambiental e
                                 transformar resíduos em recursos valiosos.
                             </p>
@@ -105,14 +113,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         
-                        <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
-                                Ajuda
-                            </h3>
-                            <p className="text-gray-700">
-                               Se precisarem de outro Card podem replicar essa div varias vezes
-                            </p>
-                        </div>
+                       
                     </div>
                 </div>
             </motion.div>

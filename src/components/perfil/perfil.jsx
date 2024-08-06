@@ -91,14 +91,14 @@ export const Perfil = () => {
 
   const PerfilDisplay = () => (
     <motion.div>
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4 ">
         <motion.img
           initial={{ y: "-50%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5 }}
           src={perfilData.imagem}
           alt="Perfil"
-          className="w-56 h-56 rounded-full object-cover"
+          className="w-56 h-56 rounded-full object-cover md:w-72 md:h-72"
         />
         <motion.div
           initial={{ x: "-50%", opacity: 0 }}

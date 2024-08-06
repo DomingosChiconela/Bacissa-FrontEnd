@@ -79,12 +79,12 @@ export const Details = () => {
           className=" w-full md:h-[75vh] lg:h-[85vh] xl:h-[95vh] 2xl:h-[110vh] object-cover"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 5, yoyo: Infinity, ease: 'easeInOut', delay: 0.5 }}
+          transition={{ duration: 4, yoyo: Infinity, ease: 'easeInOut', delay: 0.0 }}
         />
         <motion.div
           initial={{ y: '-50%', opacity: 0 }}
           animate={{ y: 0, opacity: 0.9 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
           className="p-4 pt-6 md:absolute md:top-16 md:right-0 md:h-[80vh] lg:h-[90vh]  xl:h-[100vh] 2xl:h-[115vh] md:bg-white/70 md:p-8 w-full md:w-5/12 lg:w-4/12 xl:w-3/12 md:backdrop-blur-sm md:flex md:flex-col md:justify-center"
         >
           <h2 className="text-xl font-semibold mb-2">Categoria: {card.category}</h2>

@@ -10,18 +10,18 @@ export const NavBar = () => {
     setIsOpen(!isOpen);
   };
 
-  const activeStyles = "text-blue-600 hover:text-blue-400";
-  const inactiveStyles = "text-white hover:text-blue-600";
+  const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
+  const inactiveStyles = "text-white hover:text-blue-600 transition-all duration-300 ease-in-out";
 
   return (
-    <nav className="p-4 md:pr-8 relative">
+    <nav className=" p-2 md:pr-6 relative">
       <div className="container mx-auto flex justify-between items-center">
         <div className="md:hidden text-white cursor-pointer" onClick={toggleMenu}>
           <FaBars size={20} />
         </div>
 
         <ul
-          className={`fixed top-0 right-0 text-2xl md:text-base w-80 md:w-full h-full bg-gray-800 flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out md:static md:flex md:flex-row md:space-x-8 md:bg-transparent md:h-auto md:transform-none ${
+          className={`fixed top-0 right-0 text-2xl md:text-base w-80 md:w-full h-full bg-gray-800 flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out md:static md:flex md:flex-row md:space-x-6 md:bg-transparent md:h-auto md:transform-none ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           } z-20`}
         >
@@ -31,16 +31,7 @@ export const NavBar = () => {
           >
             <FaTimes size={25} />
           </button>
-          <li className="mt-4 p-2 md:bg-transparent md:mt-0">
-            <NavLink
-              to="/"
-              exact
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex relative sm:w-24`}
-              onClick={toggleMenu}
-            >
-              Pagina Inicial
-            </NavLink>
-          </li>
+          
           <li className="mt-4 md:mt-0">
             <NavLink
               to="/residuos"
@@ -52,11 +43,11 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
             <NavLink
-              to="/contact"
+              to="/chat"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
-              Contact
+              Conversas
             </NavLink>
           </li>
           <li className="mt-4 md:mt-0">
@@ -68,13 +59,24 @@ export const NavBar = () => {
               About
             </NavLink>
           </li>
+          <li className="mt-4  md:bg-transparent md:mt-0">
+         
+            <NavLink
+              to="/login"
+              exact
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative  sm:w-28`}
+              onClick={toggleMenu}
+            >
+              Iniciar Sessão
+            </NavLink>
+            </li>
           <li className="mt-4 md:mt-0">
             <NavLink
               to="/profile"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
-              <User size={20}/>
+              <User size={22}/>
             </NavLink>
           </li>
         </ul>
