@@ -33,12 +33,12 @@ export const NavBar = () => {
           </button>
           <li className="mt-4 p-2 md:bg-transparent md:mt-0">
             <NavLink
-              to="/"
+              to="/login"
               exact
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex relative sm:w-24`}
               onClick={toggleMenu}
             >
-              Pagina Inicial
+              Iniciar Sessão
             </NavLink>
           </li>
           <li className="mt-4 md:mt-0">
