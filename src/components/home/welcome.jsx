@@ -104,6 +104,7 @@ export const Welcome = () => {
                                 organizações a implementar programas de reciclagem eficazes.
                             </p>
                         </div>
+                        
                         <div className="bg-white shadow-lg rounded-lg p-6">
                             <h3 className="text-lg font-semibold mb-2 text-blue-600">
                                 Ajuda
