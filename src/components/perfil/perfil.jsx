@@ -1,20 +1,34 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from '../../AuthContext'; // Importe o contexto de autenticação
 import Img from "../Media/perfil.jpg";
 
 export const Perfil = () => {
+  const { user, updateUser } = useAuth(); // Obtenha o usuário e a função de atualização do contexto
   const [isEditing, setIsEditing] = useState(false);
   const [perfilData, setPerfilData] = useState({
-    nome: "Beto Dias",
-    regiao: "Maputo",
-    imagem: Img,
+    nome: user?.name || "Nome Padrão",
+    regiao: user?.region || "Região Padrão",
+    imagem: user?.image || Img,
   });
+
+  useEffect(() => {
+    if (user) {
+      setPerfilData({
+        nome: user.name,
+        regiao: user.region,
+        imagem: user.image || Img,
+      });
+    }
+  }, [user]);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSave = (novoNome, novaRegiao, novaImagem) => {
+    // Atualiza os dados no contexto
+    updateUser({ name: novoNome, region: novaRegiao, image: novaImagem });
     setPerfilData({ nome: novoNome, regiao: novaRegiao, imagem: novaImagem });
     setIsEditing(false);
   };
@@ -40,7 +54,7 @@ export const Perfil = () => {
     };
 
     return (
-      <div className="flex flex-col  gap-4">
+      <div className="flex flex-col gap-4">
         <h2>Imagem de Perfil:</h2>
         <input
           type="file"
@@ -71,7 +85,7 @@ export const Perfil = () => {
           placeholder="Região"
           className="w-80 p-2 border text-center border-gray-300 rounded-lg"
         />
-        <div className="flex  justify-center items-center gap-4">
+        <div className="flex justify-center items-center gap-4">
           <button
             onClick={() => handleSave(newNome, newRegiao, newImagem)}
             className="bg-blue-500 transition-all duration-300 ease-in-out text-white text-base w-32 px-1 py-1 rounded-lg hover:bg-lime-400"
@@ -90,8 +104,8 @@ export const Perfil = () => {
   };
 
   const PerfilDisplay = () => (
-    <motion.div c>
-      <div className="flex flex-col items-center gap-4 ">
+    <motion.div>
+      <div className="flex flex-col items-center gap-4">
         <motion.img
           initial={{ y: "-50%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -127,7 +141,7 @@ export const Perfil = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5 }}
           onClick={handleEditClick}
-          className="bg-green-500 w-72 text-white px-1 py-1 rounded-lg hover:bg-green-400 hover:shadow-lg transition-shadow  cursor-pointer"
+          className="bg-green-500 w-72 text-white px-1 py-1 rounded-lg hover:bg-green-400 hover:shadow-lg transition-shadow cursor-pointer"
         >
           Editar Informações
         </motion.button>

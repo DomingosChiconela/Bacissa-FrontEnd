@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom'; 
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { User } from '@phosphor-icons/react';
+import { useAuth } from '../../AuthContext';
 
 export const NavBar = () => {
+  const { user, logout } = useAuth(); 
   const [isOpen, setIsOpen] = useState(false);
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const navigate = useNavigate(); 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,13 +21,18 @@ export const NavBar = () => {
     }
     setIsOpen(false);
   };
-  const adMin = false
-  const loggedIn = true
+
+  const adMin = false; 
   const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
   const inactiveStyles = "text-white hover:text-blue-600 transition-all duration-300 ease-in-out";
 
+  const handleLogout = () => {
+    logout(); 
+    navigate('/'); 
+  };
+
   return (
-    <nav className=" p-2 md:pr-6 relative">
+    <nav className="p-4 shadow-lg relative">
       <div className="container mx-auto flex justify-between items-center">
         <div className="md:hidden text-white cursor-pointer" onClick={toggleMenu}>
           <FaBars size={20} />
@@ -41,84 +50,111 @@ export const NavBar = () => {
             <FaTimes size={25} />
           </button>
 
-        {loggedIn &&  <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/residuos"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-             Residuos
-            </NavLink>
-          </li>}
-        {adMin &&  <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/residuos"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-             gerir contas
-            </NavLink>
-          </li>}
-         
-         
-         
-         <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/chats"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-              Conversas
-            </NavLink>
-            
-          </li>
-          <li className="mt-4 md:mt-0">
+          {user && ( 
+            <>
+              <li className="mt-4 md:mt-0">
+                <NavLink
+                  to="/residuos"
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                  onClick={toggleMenu}
+                >
+                  Residuos
+                </NavLink>
+              </li>
+              {adMin && (
+                <li className="mt-4 md:mt-0">
+                  <NavLink
+                    to="/gerir-contas" // Ajuste a rota conforme necessário
+                    className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                    onClick={toggleMenu}
+                  >
+                    Gerir Contas
+                  </NavLink>
+                </li>
+              )}
+              <li className="mt-4 md:mt-0">
+                <NavLink
+                  to="/chats"
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                  onClick={toggleMenu}
+                >
+                  Conversas
+                </NavLink>
+              </li>
+              <li className="mt-4 md:mt-0">
+                <NavLink
+                  to="/dashpage"
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                  onClick={toggleMenu}
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+              <li className="mt-4 md:mt-0">
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                  onClick={toggleMenu}
+                >
+                  <User size={22} />
+                </NavLink>
+              </li>
+              <li className="mt-4 md:mt-0 relative">
+                <span 
+                  className="bg-blue-600 text-white rounded-md px-3 py-1 font-semibold shadow-md cursor-pointer"
+                  onClick={() => setShowLogoutPopup(!showLogoutPopup)} 
+                >
+                  {`Olá, ${user.name}`}
+                </span>
 
-            <Link to="/"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}>
-            
-            
-            <button
-
-              onClick={handleScrollToAbout}
-              className={`${inactiveStyles} md:mt-0`}
-
+               
+                {showLogoutPopup && (
+                  <div className="absolute md:right-0 w-36 text-xl 2xl:text-2xl  mt-8 md:w-48 bg-slate-200/90 rounded-md shadow-lg z-30">
+                    <div className="px-4 py-2   text-center">
+                      <p className="text-gray-800">Você deseja terminar a sessão?</p>
+                      <div className="flex justify-between mt-2">
+                        <button 
+                          onClick={handleLogout} 
+                          className="text-blue-600  hover:text-blue-800"
+                        >
+                          Sim
+                        </button>
+                        <button 
+                          onClick={() => setShowLogoutPopup(false)} 
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          Não
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
               
+            </>
+          )}
 
-            >
-              About
-            </button>
-            </Link>
-          </li>
-          <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/dashpage"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-             Dashboard
-            </NavLink>
-          </li>
-          <li className="mt-4 md:mt-0">
-            <NavLink
-              to="/profile"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
-            >
-              <User size={22}/>
-            </NavLink>
-          </li>
-          <li className="mt-4  md:bg-transparent md:mt-0">
-            <NavLink
-              to="/login"
-              exact
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative  sm:w-28`}
-              onClick={toggleMenu}
-            >
-              Iniciar Sessão
-            </NavLink>
-          </li>
+          {!user && (
+            <>
+              <li className="mt-4 md:mt-0">
+                <NavLink
+                  to="/login"
+                  exact
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative sm:w-28`}
+                  onClick={toggleMenu}
+                >
+                  Iniciar Sessão
+                </NavLink>
+              </li>
+              <li className="mt-4 md:mt-0">
+                <Link to="/" onClick={handleScrollToAbout} className={inactiveStyles}>
+                  <button className={`${inactiveStyles} md:mt-0`}>
+                    About
+                  </button>
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
 
         {isOpen && (

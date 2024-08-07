@@ -3,7 +3,6 @@ import { useState } from 'react';
 import CardFt from '../components/Media/foto.jpeg';
 import { motion } from 'framer-motion';
 
-// Mock data for card details
 const mockData = [
   {
     id: 1,
@@ -39,7 +38,6 @@ const mockData = [
   },
 ];
 
-// Mapping of card IDs to user names
 const userNames = {
   1: 'João',
   2: 'Maria',

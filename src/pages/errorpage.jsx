@@ -8,8 +8,8 @@ export const ErrorPage = () => {
     <div>
       <Header />
       <main className="main ">
-        <div className="flex h-[80vh] justify-center items-center flex-col ">
-          <img src="https://img.freepik.com/free-photo/cancel-icon-right-side-white-background_187299-40277.jpg?t=st=1723044084~exp=1723047684~hmac=5139b7d1a078077dbcb38d52a34417009d1556802e0f84b43743552a0d3392f1&w=826" alt="Imagem de erro" className="w-[40%] md:w-[38%] lg:w-[25%] xl:w-[20%]" />
+        <div className="flex h-[90vh] justify-center items-center flex-col ">
+          <img src="https://www.scopycode.com/includes/images/blog/404_error_page_not_found.gif" alt="Imagem de erro" className="w-[60%] md:w-[50%] lg:w-[40%] xl:w-[30%] 2xl:w-[25%]  " />
           <div className="border-b-black flex justify-center flex-col">
             <strong className="text-7xl flex justify-center lg:text-8xl text-orange-400">OOPS</strong>
             <p className="text-center text-2xl mt-12">Página não encontrada!</p>
