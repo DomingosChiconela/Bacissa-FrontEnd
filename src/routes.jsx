@@ -8,12 +8,14 @@ import { Register } from "./pages/register";
 import { ChatPage } from "./pages/chat";
 import { ConversationsList } from "./pages/pagechat";
 import { DashPage } from "./pages/dashpage";
+import { ErrorPage } from "./pages/errorpage";
 
 
 export const route = createBrowserRouter ([
     {
         path: "/",
-        element: <Home/>
+        element: <Home/>,
+        errorElement: <ErrorPage/> 
     },
     {
         path: "/residuos",

@@ -60,7 +60,9 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
 
-            <Link to={"/"}>
+            <Link to="/"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+              onClick={toggleMenu}>
             
             
             <button
@@ -68,10 +70,7 @@ export const NavBar = () => {
               onClick={handleScrollToAbout}
               className={`${inactiveStyles} md:mt-0`}
 
-            <NavLink
-              to="/"
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-              onClick={toggleMenu}
+              
 
             >
               About
