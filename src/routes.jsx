@@ -7,6 +7,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { ChatPage } from "./pages/chat";
 import { ConversationsList } from "./pages/pagechat";
+import { DashPage } from "./pages/dashpage";
 
 
 export const route = createBrowserRouter ([
@@ -42,6 +43,11 @@ export const route = createBrowserRouter ([
     {
         path: "/chats",
         element: <ConversationsList/>
+    },
+   
+    {
+        path: "/dashpage",
+        element: <DashPage/>
     },
    
 

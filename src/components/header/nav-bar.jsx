@@ -73,6 +73,15 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
             <NavLink
+              to="/dashpage"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+              onClick={toggleMenu}
+            >
+             Dashboard
+            </NavLink>
+          </li>
+          <li className="mt-4 md:mt-0">
+            <NavLink
               to="/profile"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
