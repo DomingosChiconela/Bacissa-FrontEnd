@@ -3,7 +3,7 @@ import { Perfil } from "../components/perfil/perfil"
 
 export const Profile = () => {
     return (
-        <div>
+        <div >
             <Header/>
             <Perfil/>
         </div>

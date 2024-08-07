@@ -20,8 +20,8 @@ const mockMessages = {
     { text: 'Olá!', sender: 'bot', id: 2 },
   ],
   4: [
-    { text: 'Olá!', sender: 'user', id: 1 },
-    { text: 'Tudo bem por aqui!', sender: 'bot', id: 2 },
+    { text: 'Oi, Ana!', sender: 'user', id: 1 },
+    { text: 'Olá, Ana aqui!', sender: 'bot', id: 2 },
   ],
 };
 
@@ -144,7 +144,7 @@ export const ChatPage = () => {
           </div>
         </div>
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/chats")}
           className="mt-4 bg-gray-500/70 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors duration-300 md:absolute top-6 right-8 md:w-28  md:top-20"
         >
           Voltar

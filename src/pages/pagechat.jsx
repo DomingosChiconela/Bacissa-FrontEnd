@@ -28,7 +28,7 @@ export const ConversationsList = () => {
   return (
     <div>
       <Header />
-      <div className="p-4">
+      <div className="p-4 ">
         <h1 className="text-2xl font-bold mb-4">Minhas Conversas</h1>
         <ul className="space-y-2">
           {conversations.map((convo) => {
@@ -42,11 +42,11 @@ export const ConversationsList = () => {
                   <img
                     src={convo.photo}
                     alt={convo.title}
-                    className="w-10 h-10 rounded-full mr-4"
+                    className="w-12 h-12  md:w-16 md:h-16  lg:w-20 lg:h-20 rounded-full mr-4"
                   />
                   <div className="flex-1">
-                    <div className="font-bold">{convo.title}</div>
-                    <div className="text-sm text-gray-600">{lastMessage}</div>
+                    <div className="font-bold lg:text-lg">{convo.title}</div>
+                    <div className="text-sm lg:text-base text-gray-600">{lastMessage}</div>
                   </div>
                 </Link>
               </li>

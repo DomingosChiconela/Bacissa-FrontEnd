@@ -92,15 +92,15 @@ export const Welcome = () => {
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.0 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 2.0, delay: 0.2 }}
+                        transition={{ duration: 2.0, delay: 1.0 }}
                         className="flex flex-col items-center justify-center pt-16 md:pt-0"
                     >
                         <motion.button
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 2.0, delay: 2.5 }}
+                            transition={{ duration: 2.0, delay: 3.5 }}
                             onClick={toggleMute}
                             className="absolute top-4 left-4 bg-black/50 text-white px-4 py-2 rounded-full hover:bg-black/80 transition-colors duration-300"
                         >

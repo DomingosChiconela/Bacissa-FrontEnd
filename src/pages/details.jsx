@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CardFt from '../components/Media/foto.jpeg';
 import { motion } from 'framer-motion';
 
+// Mock data for card details
 const mockData = [
   {
     id: 1,
@@ -37,6 +38,14 @@ const mockData = [
     image: CardFt,
   },
 ];
+
+// Mapping of card IDs to user names
+const userNames = {
+  1: 'João',
+  2: 'Maria',
+  3: 'Pedro',
+  4: 'Ana',
+};
 
 export const Details = () => {
   const { id } = useParams();
@@ -109,6 +118,7 @@ export const Details = () => {
             Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}
           </p>
           <p className="text-lg mb-2">Localização: {card.location}</p>
+          <p className="text-lg mb-2">Nome do Usuário: {userNames[card.id]}</p>
           <textarea
             value={proposal}
             onChange={(e) => setProposal(e.target.value)}
