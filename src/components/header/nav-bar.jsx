@@ -17,7 +17,8 @@ export const NavBar = () => {
     }
     setIsOpen(false);
   };
-
+  const adMin = false
+  const loggedIn = true
   const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
   const inactiveStyles = "text-white hover:text-blue-600 transition-all duration-300 ease-in-out";
 
@@ -40,7 +41,7 @@ export const NavBar = () => {
             <FaTimes size={25} />
           </button>
 
-          <li className="mt-4 md:mt-0">
+        {loggedIn &&  <li className="mt-4 md:mt-0">
             <NavLink
               to="/residuos"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
@@ -48,8 +49,20 @@ export const NavBar = () => {
             >
              Residuos
             </NavLink>
-          </li>
-          <li className="mt-4 md:mt-0">
+          </li>}
+        {adMin &&  <li className="mt-4 md:mt-0">
+            <NavLink
+              to="/residuos"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+              onClick={toggleMenu}
+            >
+             gerir contas
+            </NavLink>
+          </li>}
+         
+         
+         
+         <li className="mt-4 md:mt-0">
             <NavLink
               to="/chats"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
@@ -57,6 +70,7 @@ export const NavBar = () => {
             >
               Conversas
             </NavLink>
+            
           </li>
           <li className="mt-4 md:mt-0">
 
