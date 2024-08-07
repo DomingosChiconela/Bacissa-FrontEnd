@@ -5,15 +5,15 @@ import "slick-carousel/slick/slick-theme.css";
 
 const imagens = [
   { image: 'https://www.terradecultivo.com.br/tcsolucoesambientais/wp-content/uploads/2021/04/Plano-de-Gerenciamento-de-Residuos-Solidos1-2048x1152.png' },
-  { image: 'https://example.com/path/to/criancas.jpg' },
-  { image: 'https://example.com/path/to/voluntariado.jpg' },
-  { image: 'https://example.com/path/to/garrafas-entulhadas.jpg' },
-  { image: 'https://example.com/path/to/garrafa-praia.jpg' },
-  { image: 'https://example.com/path/to/papelao.jpg' },
-  { image: 'https://example.com/path/to/plastico.jpg' },
-  { image: 'https://example.com/path/to/papelao-reciclado.jpg' },
-  { image: 'https://example.com/path/to/madeira.jpg' },
-  { image: 'https://example.com/path/to/ferros.jpg' },
+  { image: 'https://plus.unsplash.com/premium_photo-1682310562583-bfc0a85646da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHJlY2ljbGFnZW0lMjBubyUyMG1laW8lMjBhbWJpZW50ZXxlbnwwfHwwfHx8MA%3D%3D' },
+  { image: 'https://plus.unsplash.com/premium_photo-1683121758343-8da46d7b2c9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { image: 'https://plus.unsplash.com/premium_photo-1683121710842-acbb16d12261?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { image: 'https://images.unsplash.com/photo-1721622248864-08cd5427f7a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SXJvbiUyMFJlY3ljbGluZ3xlbnwwfHwwfHx8MA%3D%3D' },
+  { image: 'https://images.unsplash.com/photo-1507560461415-997cd00bfd45?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { image: 'https://images.unsplash.com/photo-1721622248657-55b1c5ec1dbe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlY3ljbGluZyUyMG9mJTIwYm90dGxlc3xlbnwwfHwwfHx8MA%3D%3D' },
+  { image: 'https://media.istockphoto.com/id/1462151791/photo/girl-collecting-garbage-from-nature.webp?b=1&s=170667a&w=0&k=20&c=CeNhjc_qXGJPHWfml2axneQi8UQEAalmhyjfy3t9ai0=' },
+  { image: 'https://media.istockphoto.com/id/829504010/photo/hands-holding-plastic-bottle.webp?b=1&s=170667a&w=0&k=20&c=LEFcVO5EyqWZLZ_Re4KNNC07E_Pkfz7VF4kpx7zzAqk=' },
+  { image: 'https://images.unsplash.com/photo-1721622248852-b22f47e9b9ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SXJvbiUyMFJlY3ljbGluZ3xlbnwwfHwwfHx8MA%3D%3D' },
 ];
 
 export const Featured = () => {
