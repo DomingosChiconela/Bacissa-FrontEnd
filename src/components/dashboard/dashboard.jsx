@@ -38,9 +38,10 @@ const lineData = {
   datasets: [
     {
       label: 'Informações Mensais',
-      data: [100, 120, 150, 170, 200, 220, 250],
+      data:  [50, 60, 70, 80, 90, 100, 110],
       fill: false,
-      borderColor: '#742774',
+      borderColor: 'rgba(153, 102, 255, 1)',
+      backgroundColor: 'rgba(216,252,208)',
       tension: 0.1
     }
   ]
