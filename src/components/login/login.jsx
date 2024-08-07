@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../header";
-import { useAuth } from '../../AuthContext';
 import Modal from 'react-modal';
 import { useState } from 'react';
+import { useAuth } from "../../AuthContext";
 
 Modal.setAppElement('#root'); 
 

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useAuth } from '../../AuthContext'; // Importe o contexto de autenticação
 import Img from "../Media/perfil.jpg";
+import { useAuth } from "../../AuthContext";
 
 export const Perfil = () => {
-  const { user, updateUser } = useAuth(); // Obtenha o usuário e a função de atualização do contexto
+  const { user, updateUser } = useAuth(); 
   const [isEditing, setIsEditing] = useState(false);
   const [perfilData, setPerfilData] = useState({
     nome: user?.name || "Nome Padrão",
