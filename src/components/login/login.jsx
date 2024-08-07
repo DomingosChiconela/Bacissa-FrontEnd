@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../header";
 
 export const LoginForm = () => {
@@ -22,12 +22,12 @@ export const LoginForm = () => {
 
    
         <Header/>
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md"
+        className="w-80 md:w-full max-w-lg p-6 bg-white rounded-lg shadow-md"
       >
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">
           Bacissa
@@ -104,6 +104,15 @@ export const LoginForm = () => {
           >
             Login
           </button>
+          <Link to={"/sing-up"}>
+          
+          <button
+            type="button"
+            className="w-full py-2 rounded mt-4  transition duration-300"
+          >
+            Criar conta
+          </button>
+          </Link>
         </form>
       </motion.div>
     </div>
