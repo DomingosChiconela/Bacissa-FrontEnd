@@ -33,7 +33,7 @@ export const LoginForm = () => {
     setIsModalOpen(true); 
     setTimeout(() => {
       navigate("/");
-    }, 1500);
+    }, 1000);
   };
 
   const closeModal = () => {
