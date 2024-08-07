@@ -4,6 +4,10 @@ import { Residuos } from "./pages/residuos";
 import { Details } from "./pages/details";
 import { Profile } from "./pages/profile";
 import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { ChatPage } from "./pages/chat";
+import { ConversationsList } from "./pages/pagechat";
+import { DashPage } from "./pages/dashpage";
 
 
 export const route = createBrowserRouter ([
@@ -26,6 +30,24 @@ export const route = createBrowserRouter ([
     {
         path: "/login",
         element: <Login/>
+    },
+    {
+        path: "/sing-up",
+        element: <Register/>
+    },
+    
+    {
+        path: "/chat/:id",
+        element: <ChatPage/>
+    },
+    {
+        path: "/chats",
+        element: <ConversationsList/>
+    },
+   
+    {
+        path: "/dashpage",
+        element: <DashPage/>
     },
    
 

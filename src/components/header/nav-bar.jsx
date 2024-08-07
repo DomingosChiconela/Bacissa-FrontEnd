@@ -1,5 +1,5 @@
-import  { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { User } from '@phosphor-icons/react';
 
@@ -8,6 +8,14 @@ export const NavBar = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleScrollToAbout = () => {
+    const aboutSection = document.getElementById('about-section'); 
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsOpen(false);
   };
 
   const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
@@ -31,7 +39,7 @@ export const NavBar = () => {
           >
             <FaTimes size={25} />
           </button>
-          
+
           <li className="mt-4 md:mt-0">
             <NavLink
               to="/residuos"
@@ -43,7 +51,7 @@ export const NavBar = () => {
           </li>
           <li className="mt-4 md:mt-0">
             <NavLink
-              to="/chat"
+              to="/chats"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
@@ -51,25 +59,34 @@ export const NavBar = () => {
             </NavLink>
           </li>
           <li className="mt-4 md:mt-0">
+
+            <Link to={"/"}>
+            
+            
+            <button
+
+              onClick={handleScrollToAbout}
+              className={`${inactiveStyles} md:mt-0`}
+
             <NavLink
               to="/"
               className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
+
             >
               About
-            </NavLink>
+            </button>
+            </Link>
           </li>
-          <li className="mt-4  md:bg-transparent md:mt-0">
-         
+          <li className="mt-4 md:mt-0">
             <NavLink
-              to="/login"
-              exact
-              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative  sm:w-28`}
+              to="/dashpage"
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
               onClick={toggleMenu}
             >
-              Iniciar Sessão
+             Dashboard
             </NavLink>
-            </li>
+          </li>
           <li className="mt-4 md:mt-0">
             <NavLink
               to="/profile"
@@ -77,6 +94,16 @@ export const NavBar = () => {
               onClick={toggleMenu}
             >
               <User size={22}/>
+            </NavLink>
+          </li>
+          <li className="mt-4  md:bg-transparent md:mt-0">
+            <NavLink
+              to="/login"
+              exact
+              className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative  sm:w-28`}
+              onClick={toggleMenu}
+            >
+              Iniciar Sessão
             </NavLink>
           </li>
         </ul>

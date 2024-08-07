@@ -40,7 +40,7 @@ export const Perfil = () => {
     };
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col  gap-4">
         <h2>Imagem de Perfil:</h2>
         <input
           type="file"
@@ -90,7 +90,7 @@ export const Perfil = () => {
   };
 
   const PerfilDisplay = () => (
-    <motion.div>
+    <motion.div c>
       <div className="flex flex-col items-center gap-4 ">
         <motion.img
           initial={{ y: "-50%", opacity: 0 }}
