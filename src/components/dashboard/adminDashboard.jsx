@@ -40,7 +40,7 @@ const newLineData = {
       label: 'Desempenho Mensal',
       data: [45, 70, 65, 75, 85, 70, 105],
       fill: false,
-      borderColor: 'rgba(75, 192, 192, 1)',
+      borderColor: 'rgba(253, 227, 167, 0.6)',
       backgroundColor: 'rgba(253, 227, 167, 0.6)',
       tension: 0.1
     }
