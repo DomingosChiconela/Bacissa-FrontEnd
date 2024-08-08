@@ -1,8 +1,9 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import CardFt from '../Media/foto.jpeg';
 import { NumberFormatBase } from 'react-number-format';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Trash, TrashSimple } from '@phosphor-icons/react';
 
 export const Cards = () => {
   const [cards, setCards] = useState([
@@ -82,13 +83,13 @@ export const Cards = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const handlePriceChange = (values) => {
     setForm({
       ...form,
       price: values.value,
     });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -100,9 +101,16 @@ export const Cards = () => {
     setCards(updatedCards);
     setForm({ category: '', price: '', quantity: '', location: '', image: null });
     setImagePreview(null);
-    setIsFormOpen(false); 
-    setShowSuccess(true); 
-    setTimeout(() => setShowSuccess(false), 3000); 
+    setIsFormOpen(false);
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+  };
+
+  const handleRemove = (id, e) => {
+    e.stopPropagation(); // Prevent the event from propagating to the parent Link
+    if (window.confirm('Tem certeza de que deseja excluir este item?')) {
+      setCards(cards.filter(card => card.id !== id));
+    }
   };
 
   return (
@@ -128,7 +136,7 @@ export const Cards = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '50%', opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed right-2  mt-3 text-base w-36 h-12 md:h-auto md:w-auto md:py-2 md:p-2 text-center  md:text-lg bg-green-500 text-white py-0 px-1 rounded-lg shadow-lg z-50"
+            className="fixed right-2 mt-3 text-base w-36 h-12 md:h-auto md:w-auto md:py-2 md:p-2 text-center md:text-lg bg-green-500 text-white py-0 px-1 rounded-lg shadow-lg z-50"
           >
             adicionado com sucesso!
           </motion.div>
@@ -157,7 +165,7 @@ export const Cards = () => {
                   ))}
                 </select>
               </div>
-<div className="mb-4">
+              <div className="mb-4">
                 <label className="block text-gray-700">Preço</label>
                 <NumberFormatBase
                   name="price"
@@ -170,7 +178,6 @@ export const Cards = () => {
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <label className="block text-gray-700">Quantidade</label>
                 <input
@@ -226,22 +233,33 @@ export const Cards = () => {
           </div>
         </div>
       )}
- {cards.map((card) => (
+
+      {cards.map((card) => (
         <div key={card.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-          <Link to={`/residuos/${card.id}`}> 
-            <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-              <img src={card.image || CardFt} alt="Product" className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h1 className="text-xl font-semibold mb-2">{card.category}</h1>
-                <p className="text-gray-700 mb-1">Preço: {card.price} MT</p>
-                <p className="text-gray-700 mb-1">Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}</p>
-                <p className="text-gray-700 mb-4">Localização: {card.location}</p>
-                <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                  Ver detalhes
+          <div className="bg-white rounded-lg shadow-xl overflow-hidden">
+            <img src={card.image || CardFt} alt="Product" className="w-full h-48 object-cover" />
+            <div className="p-4 flex flex-col h-full">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h1 className="text-xl font-semibold mb-2">{card.category}</h1>
+                  <p className="text-gray-700 mb-1">Preço: {card.price} MT</p>
+                  <p className="text-gray-700 mb-1">Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}</p>
+                  <p className="text-gray-700 mb-4">Localização: {card.location}</p>
+                </div>
+                <button
+                  onClick={(e) => handleRemove(card.id, e)}
+                  className="bg-red-500 text-white py-1 px-2 rounded-lg hover:bg-red-800 hover:shadow-lg transition-all duration-300"
+                >
+                 <Trash size={25}/>
                 </button>
               </div>
+              <Link to={`/residuos/${card.id}`} className="mt-auto">
+                <div className="bg-blue-500 text-white py-2 px-4 text-center rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                  Ver Detalhes
+                </div>
+              </Link>
             </div>
-          </Link>
+          </div>
         </div>
       ))}
     </motion.div>
