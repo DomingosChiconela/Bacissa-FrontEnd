@@ -7,7 +7,7 @@ import bgVideo from "../Media/Reciclagem.mp4";
 
 export const Welcome = () => {
     const [isMuted, setIsMuted] = useState(true);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [ setIsPlaying] = useState(false);
     const videoRef = useRef(null);
     const aboutRef = useRef(null);
 
@@ -72,7 +72,7 @@ export const Welcome = () => {
                 observer.unobserve(videoElement);
             }
         };
-    }, []);
+    }, );
 
     return (
         <div className="w-full">
@@ -136,7 +136,7 @@ export const Welcome = () => {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 O que é o Bacissa
                             </h3>
                             <p className="text-gray-700">
@@ -144,7 +144,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 Nossa missão
                             </h3>
                             <p className="text-gray-700">
@@ -152,7 +152,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 Conexões Locais
                             </h3>
                             <p className="text-gray-700">
@@ -160,7 +160,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 Educação e Consciência
                             </h3>
                             <p className="text-gray-700">
@@ -168,7 +168,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 Características da Aplicação
                             </h3>
                             <p className="text-gray-700">
@@ -176,7 +176,7 @@ export const Welcome = () => {
                             </p>
                         </div>
                         <div className="bg-white shadow-lg rounded-lg p-6">
-                            <h3 className="text-lg font-semibold mb-2 text-blue-600">
+                            <h3 className="text-lg font-semibold mb-2 text-green-600">
                                 Benefícios da Bacissa
                             </h3>
                             <p className="text-gray-700">

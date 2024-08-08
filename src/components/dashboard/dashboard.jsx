@@ -1,8 +1,6 @@
-import React from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, PointElement, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
-// Registre os componentes necessários do Chart.js
 ChartJS.register(
   Title, Tooltip, Legend,
   LineElement, PointElement,
@@ -10,7 +8,7 @@ ChartJS.register(
   CategoryScale, LinearScale
 );
 
-// Dados para o gráfico de barras (Propostas Recebidas e Anúncios Publicados)
+
 const barData = {
   labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
   datasets: [
@@ -32,7 +30,6 @@ const barData = {
   ]
 };
 
-// Dados para o gráfico de linhas (Informações Mensais)
 const lineData = {
   labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
   datasets: [
@@ -49,7 +46,7 @@ const lineData = {
 
 export const Dashboard = () => {
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6  max-w-xl md:max-w-2xl lg:max-w-3xl xl-max-w-4xl 2xl:max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">Dashboard</h1>
       <div className="mb-8">
         <h2 className=" text-lg lg:text-3xl md:text-2xl font-semibold mb-4 text-center">Propostas Recebidas e Anúncios Publicados</h2>

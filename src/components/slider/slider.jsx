@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import  { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,7 +17,7 @@ const imagens = [
 ];
 
 export const Featured = () => {
-  const [showAll, setShowAll] = useState(false);
+  const [showAll] = useState(false);
   const sliderRef = useRef(null);
 
   const settings = {
@@ -57,15 +57,15 @@ export const Featured = () => {
 
   return (
     <div
-      className="py-4 w-full m-auto overflow-hidden"
+      className="py-4 w-full m-auto bg-green-950 overflow-hidden"
       onWheel={handleWheel}
     >
       <Slider ref={sliderRef} {...settings}>
         {(showAll ? imagens : imagens.slice(0, 10)).map((imagem, index) => (
-          <div key={index} className="px-4">
+          <div key={index} className="px-4 ">
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                className="w-full h-48 border shadow-lg md:h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
+                className="w-full h-48 border border-black shadow-lg md:h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
                 src={imagem.image}
                 alt={`Imagem ${index + 1}`}
               />
@@ -81,7 +81,7 @@ const NextArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div
-      className={`${className} absolute top-[50%] right-4 p-3 bg-gray-800 rounded-full text-white shadow-lg cursor-pointer`}
+      className={`${className} absolute top-[50%] right-8 p-3 rounded-full text-white  shadow-lg cursor-pointer`}
       style={{ zIndex: 1 }}
       onClick={onClick}
     >
@@ -93,7 +93,7 @@ const PrevArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div
-      className={`${className} absolute top-[50%] left-4 p-3 bg-gray-800 rounded-full text-white shadow-lg cursor-pointer`}
+      className={`${className} absolute top-[50%] left-4 p-3  rounded-full text-white shadow-lg cursor-pointer`}
       style={{ zIndex: 1 }}
       onClick={onClick}
     >
