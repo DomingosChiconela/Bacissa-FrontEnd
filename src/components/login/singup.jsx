@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../header";
+import { Footer } from "../header/footer";
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
@@ -131,6 +132,7 @@ export const RegisterForm = () => {
           </form>
         </motion.div>
       </div>
+      <Footer/>
     </div>
   );
 };
