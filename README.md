@@ -1,1 +1,2 @@
-# React + Vite
+# Bacissa
+ Bacissa é uma plataforma digital inovadora que conecta diretamente os cidadãos de Moçambique aos compradores de materiais recicláveis. Através do aplicativo, os munícipes podem registrar os tipos e quantidades de resíduos que possuem, facilitando a busca por compradores interessados. Por sua vez, os compradores podem encontrar rapidamente os materiais necessários e negociar diretamente com os vendedores. A plataforma oferece um sistema de avaliação que promove a confiança entre os usuários e otimiza a logística da coleta. Ao incentivar a reciclagem e a geração de renda para os cidadãos, a Bacissa contribui para um futuro mais sustentável e limpo para Moçambique.

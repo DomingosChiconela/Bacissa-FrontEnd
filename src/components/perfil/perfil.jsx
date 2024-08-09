@@ -87,7 +87,7 @@ export const Perfil = () => {
         <div className="flex justify-center items-center gap-4">
           <button
             onClick={() => handleSave(newNome, newRegiao, newImagem)}
-            className="bg-blue-500 transition-all duration-300 ease-in-out text-white text-base w-32 px-1 py-1 rounded-lg hover:bg-lime-400"
+            className="bg-blue-500 transition-all duration-300 ease-in-out text-white text-base w-32 px-1 py-1 rounded-lg hover:bg-green-500"
           >
             Salvar
           </button>
@@ -104,7 +104,7 @@ export const Perfil = () => {
 
   const PerfilDisplay = () => (
     <motion.div>
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col  items-center gap-4">
         <motion.img
           initial={{ y: "-50%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

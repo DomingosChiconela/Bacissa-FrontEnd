@@ -269,7 +269,7 @@ export const Cards = () => {
                   )}
                 </div>
                 <Link to={`/residuos/${card.id}`} className="mt-auto">
-                  <div className="bg-blue-500 text-white py-2 px-4 text-center rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                  <div className="bg-green-500 text-white py-2 px-4 text-center rounded-lg hover:bg-green-600 transition-colors duration-300">
                     Ver Detalhes
                   </div>
                 </Link>

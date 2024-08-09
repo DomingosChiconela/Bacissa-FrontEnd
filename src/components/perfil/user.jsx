@@ -96,7 +96,7 @@ export const Users = () => {
     ];
 
     const options = {
-        selectableRows: false,
+        selectableRows: true,
         elevation: 0,
         rowsPerPage: 10,
         rowsPerPageOptions: [5, 10, 15, 20, 30],
@@ -130,9 +130,9 @@ export const Users = () => {
         });
 
     return (
-        <div className='bg-gradient-to-r from-blue-400 to-purple-600'>
+        <div className='bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-2xl'>
             <Header />
-            <div className="bg-gradient-to-r from-blue-400 to-purple-600 py-10 min-h-screen grid place-items-center">
+            <div className="bg-gradient-to-r from-green-400 to-green-600 py-10 min-h-screen grid place-items-center">
                 <div className="w-10/12 max-w-4xl">
                     <ThemeProvider theme={getMuiTheme()}>
                         <motion.div

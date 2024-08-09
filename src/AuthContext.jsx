@@ -17,10 +17,10 @@ export const AuthProvider = ({ children }) => {
     setUser((prevUser) => {
       const newUser = {
         ...prevUser,
-        ...updatedData, // Atualiza os dados do usuário
+        ...updatedData, 
       };
-      localStorage.setItem('user', JSON.stringify(newUser)); // Salva no localStorage
-      return newUser; // Retorna o novo estado do usuário
+      localStorage.setItem('user', JSON.stringify(newUser));
+      return newUser; 
     });
   };
 
