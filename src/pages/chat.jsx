@@ -171,7 +171,7 @@ export const ChatPage = () => {
             />
             <button
               onClick={handleSend}
-              className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 flex items-center space-x-2"
+              className="bg-green-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 flex items-center space-x-2"
             >
               <span>Enviar</span>
               <FontAwesomeIcon icon={faPaperPlane} />
