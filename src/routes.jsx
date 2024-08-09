@@ -40,7 +40,6 @@ export const route = createBrowserRouter([
     element: <ForgetPage />
   },
   {
-    path: "/singup",
     path: "/login/sing-up",
     element: <Register />
   },
