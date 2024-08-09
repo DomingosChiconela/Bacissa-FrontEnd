@@ -89,7 +89,7 @@ export const Featured = () => {
 
   return (
     <div
-      className="py-4 w-full m-auto bg-slate-100 overflow-hidden mb-2 shadow-sm"
+      className="py-4 w-full m-auto bg-green-950 overflow-hidden  shadow-sm"
       onWheel={handleWheel}
     >
       <Slider ref={sliderRef} {...settings}>

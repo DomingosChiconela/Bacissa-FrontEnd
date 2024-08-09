@@ -143,44 +143,7 @@ export const RegisterForm = () => {
                 <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>
               )}
             </div>
-            <div>
-              <label htmlFor="province" className="block text-gray-700">Província</label>
-              <input
-                type="text"
-                id="province"
-                placeholder="Digite sua província"
-                {...register("province", {
-                  required: "Província é obrigatória",
-                  minLength: {
-                    value: 3,
-                    message: "Província deve ter mais de 2 letras",
-                  },
-                })}
-                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"
-              />
-              {errors.province && (
-                <p className="text-red-500 text-sm mt-1">{errors.province.message}</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="district" className="block text-gray-700">Distrito</label>
-              <input
-                type="text"
-                id="district"
-                placeholder="Digite seu distrito"
-                {...register("district", {
-                  required: "Distrito é obrigatório",
-                  minLength: {
-                    value: 3,
-                    message: "Distrito deve ter mais de 2 letras",
-                  },
-                })}
-                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"
-              />
-              {errors.district && (
-                <p className="text-red-500 text-sm mt-1">{errors.district.message}</p>
-              )}
-            </div>
+            
             <div className="flex items-center">
               <input
                 type="checkbox"
