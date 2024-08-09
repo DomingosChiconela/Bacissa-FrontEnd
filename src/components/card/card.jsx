@@ -3,9 +3,17 @@ import CardFt from '../Media/foto.jpeg';
 import { NumberFormatBase } from 'react-number-format';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Trash, TrashSimple } from '@phosphor-icons/react';
+import { Trash } from '@phosphor-icons/react';
+import { useAuth } from '../../AuthContext';
+
+const isSafari = () => {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  return userAgent.includes('safari') && !userAgent.includes('chrome');
+};
 
 export const Cards = () => {
+  const { user } = useAuth();
+
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -52,6 +60,8 @@ export const Cards = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cardToRemove, setCardToRemove] = useState(null);
 
   const categories = [
     'Vidro',
@@ -106,11 +116,15 @@ export const Cards = () => {
     setTimeout(() => setShowSuccess(false), 3000);
   };
 
-  const handleRemove = (id, e) => {
-    e.stopPropagation(); // Prevent the event from propagating to the parent Link
-    if (window.confirm('Tem certeza de que deseja excluir este item?')) {
-      setCards(cards.filter(card => card.id !== id));
-    }
+  const handleRemove = (id) => {
+    setCardToRemove(id);
+    setIsModalOpen(true);
+  };
+
+  const confirmRemove = () => {
+    setCards(cards.filter(card => card.id !== cardToRemove));
+    setIsModalOpen(false);
+    setCardToRemove(null);
   };
 
   return (
@@ -234,34 +248,103 @@ export const Cards = () => {
         </div>
       )}
 
-      {cards.map((card) => (
-        <div key={card.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-          <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-            <img src={card.image || CardFt} alt="Product" className="w-full h-48 object-cover" />
-            <div className="p-4 flex flex-col h-full">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h1 className="text-xl font-semibold mb-2">{card.category}</h1>
-                  <p className="text-gray-700 mb-1">Preço: {card.price} MT</p>
-                  <p className="text-gray-700 mb-1">Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}</p>
-                  <p className="text-gray-700 mb-4">Localização: {card.location}</p>
-                </div>
-                <button
-                  onClick={(e) => handleRemove(card.id, e)}
-                  className="bg-red-500 text-white py-1 px-2 rounded-lg hover:bg-red-800 hover:shadow-lg transition-all duration-300"
-                >
-                 <Trash size={25}/>
-                </button>
-              </div>
-              <Link to={`/residuos/${card.id}`} className="mt-auto">
-                <div className="bg-blue-500 text-white py-2 px-4 text-center rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                  Ver Detalhes
-                </div>
+      <AnimatePresence>
+        {cards.map((card) => (
+          <motion.div
+            key={card.id}
+            initial={{ opacity: 1, z: 1 }} 
+            exit={{ opacity: 0, z: -100, transition: { duration: 0.3 } }} 
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+          >
+            <div className="bg-white rounded-lg shadow-xl overflow-hidden">
+              <Link to={`/residuos/${card.id}`}>
+                <img src={card.image || CardFt} alt="Product" className="w-full h-48 object-cover cursor-pointer" />
               </Link>
+              <div className="p-4 flex flex-col h-full">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h1 className="text-xl font-semibold mb-2">{card.category}</h1>
+                    <p className="text-gray-700 mb-1">Preço: {card.price} MT</p>
+                    <p className="text-gray-700 mb-1">Quantidade: {card.quantity} {parseInt(card.quantity) > 1 ? 'Disponíveis' : 'Disponível'}</p>
+                    <p className="text-gray-700 mb-4">Localização: {card.location}</p>
+                  </div>
+                  {user && user.role === 'admin' && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                        handleRemove(card.id);
+                      }}
+                      className="text-red-500 hover:text-red-700 transition-all duration-300 ease-in-out  hover:shadow-xl"
+                    >
+                      <Trash size={28} />
+                    </button>
+                  )}
+                </div>
+                <Link to={`/residuos/${card.id}`} className="mt-auto">
+                  <div className="bg-blue-500 text-white py-2 px-4 text-center rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                    Ver Detalhes
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      ))}
+          </motion.div>
+        ))}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <>
+            {isSafari() ? (
+              <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+                <div className="bg-white rounded-lg p-6 w-11/12 max-w-md mx-auto" style={{ position: 'relative' }}>
+                  <h2 className="text-lg font-bold mb-4">Confirmar Exclusão</h2>
+                  <p>Tem certeza de que deseja excluir este item?</p>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      onClick={() => setIsModalOpen(false)}
+                      className="bg-gray-500 text-white py-2 px-4 rounded-lg mr-2 hover:bg-gray-600 transition-colors duration-300"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      onClick={confirmRemove}
+                      className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300"
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.5, opacity: 0 }}
+                  className="bg-white rounded-lg p-6 w-11/12 max-w-md mx-auto"
+                >
+                  <h2 className="text-lg font-bold mb-4">Confirmar Exclusão</h2>
+                  <p>Tem certeza de que deseja excluir este item?</p>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      onClick={() => setIsModalOpen(false)}
+                      className="bg-gray-500 text-white py-2 px-4 rounded-lg mr-2 hover:bg-gray-600 transition-colors duration-300"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      onClick={confirmRemove}
+                      className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300"
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

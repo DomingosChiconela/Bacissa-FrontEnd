@@ -1,27 +1,27 @@
-import  { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import userPhoto from '../components/Media/user-photo.jpeg';
-import botPhoto from '../components/Media/bot-photo.jpeg';
-import { Header } from '../components/header';
+import { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import userPhoto from "../components/Media/user-photo.jpeg";
+import botPhoto from "../components/Media/bot-photo.jpeg";
+import { Header } from "../components/header";
 
 const mockMessages = {
   1: [
-    { text: 'Olá, João!', sender: 'user', id: 1 },
-    { text: 'Oi, tudo bem?', sender: 'bot', id: 2 },
+    { text: "Olá, João!", sender: "user", id: 1 },
+    { text: "Oi, tudo bem?", sender: "bot", id: 2 },
   ],
   2: [
-    { text: 'Oi, Maria!', sender: 'user', id: 1 },
-    { text: 'Olá, como posso ajudar?', sender: 'bot', id: 2 },
+    { text: "Oi, Maria!", sender: "user", id: 1 },
+    { text: "Olá, como posso ajudar?", sender: "bot", id: 2 },
   ],
   3: [
-    { text: 'Oi, Pedro!', sender: 'user', id: 1 },
-    { text: 'Olá!', sender: 'bot', id: 2 },
+    { text: "Oi, Pedro!", sender: "user", id: 1 },
+    { text: "Olá!", sender: "bot", id: 2 },
   ],
   4: [
-    { text: 'Oi, Ana!', sender: 'user', id: 1 },
-    { text: 'Olá, Ana aqui!', sender: 'bot', id: 2 },
+    { text: "Oi, Ana!", sender: "user", id: 1 },
+    { text: "Olá, Ana aqui!", sender: "bot", id: 2 },
   ],
 };
 
@@ -29,48 +29,66 @@ export const ChatPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const chatEndRef = useRef(null);
 
   useEffect(() => {
     const convoMessages = mockMessages[id] || [];
-    
-    const savedProposals = JSON.parse(localStorage.getItem('proposals')) || {};
+
+    const savedProposals = JSON.parse(localStorage.getItem("proposals")) || {};
     const savedMessages = savedProposals[id] || [];
 
-    const newMessages = convoMessages.concat(savedMessages.map((msg, index) => ({ text: msg, sender: 'user', id: `saved-${index}` })));
-    
+    const newMessages = convoMessages.concat(
+      savedMessages.map((msg, index) => ({
+        text: msg,
+        sender: "user",
+        id: `saved-${index}`,
+      }))
+    );
+
     setMessages(newMessages);
   }, [id]);
 
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.sender === 'user') {
+      if (lastMessage.sender === "user") {
         const responseTimeout = setTimeout(() => {
           switch (lastMessage.text.toLowerCase()) {
-            case 'o residuo ainda esta disponivel?':
-              setMessages(prevMessages => [
+            case "o residuo ainda esta disponivel?":
+              setMessages((prevMessages) => [
                 ...prevMessages,
-                { text: 'Está sim disponível, vai querer?', sender: 'bot', id: Date.now() }
+                {
+                  text: "Está sim disponível, vai querer?",
+                  sender: "bot",
+                  id: Date.now(),
+                },
               ]);
               break;
-            case 'vou sim, mas so tenho 30':
-              setMessages(prevMessages => [
+            case "vou sim, mas so tenho 30":
+              setMessages((prevMessages) => [
                 ...prevMessages,
-                { text: 'Ahhh Aumenta lá 20 fecharmos.', sender: 'bot', id: Date.now() }
+                {
+                  text: "Ahhh Aumenta lá 20 fecharmos.",
+                  sender: "bot",
+                  id: Date.now(),
+                },
               ]);
               break;
-            case 'ta nice, amanha as 12 venho buscar':
-              setMessages(prevMessages => [
+            case "ta nice, amanha as 12 venho buscar":
+              setMessages((prevMessages) => [
                 ...prevMessages,
-                { text: 'Combinado', sender: 'bot', id: Date.now() }
+                { text: "Combinado", sender: "bot", id: Date.now() },
               ]);
               break;
             default:
-              setMessages(prevMessages => [
+              setMessages((prevMessages) => [
                 ...prevMessages,
-                { text: 'Olá, Como posso ajudar?', sender: 'bot', id: Date.now() }
+                {
+                  text: "Olá, Como posso ajudar?",
+                  sender: "bot",
+                  id: Date.now(),
+                },
               ]);
               break;
           }
@@ -83,14 +101,14 @@ export const ChatPage = () => {
 
   const handleSend = () => {
     if (input.trim()) {
-      const newMessage = { text: input, sender: 'user', id: Date.now() };
+      const newMessage = { text: input, sender: "user", id: Date.now() };
       setMessages([...messages, newMessage]);
-      setInput('');
+      setInput("");
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -98,7 +116,7 @@ export const ChatPage = () => {
 
   useEffect(() => {
     if (chatEndRef.current) {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
@@ -110,14 +128,31 @@ export const ChatPage = () => {
           <div className="p-4 bg-blue-500 text-white font-bold">Chat</div>
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
-              <div key={index} className={`flex ${message.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
-                <div className={`flex items-center space-x-2 ${message.sender === 'bot' ? '' : 'flex-row-reverse space-x-reverse'}`}>
+              <div
+                key={index}
+                className={`flex ${
+                  message.sender === "bot" ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div
+                  className={`flex items-center space-x-2 ${
+                    message.sender === "bot"
+                      ? ""
+                      : "flex-row-reverse space-x-reverse"
+                  }`}
+                >
                   <img
-                    src={message.sender === 'bot' ? botPhoto : userPhoto}
+                    src={message.sender === "bot" ? botPhoto : userPhoto}
                     alt={message.sender}
                     className="w-8 lg:w-16 lg:h-16 xl:w-20 xl:h-20 h-8 rounded-full"
                   />
-                  <div className={`p-3 rounded-lg ${message.sender === 'bot' ? 'bg-gray-200' : 'bg-blue-500 text-white'}`}>
+                  <div
+                    className={`p-3 rounded-lg ${
+                      message.sender === "bot"
+                        ? "bg-gray-200"
+                        : "bg-blue-500 text-white"
+                    }`}
+                  >
                     {message.text}
                   </div>
                 </div>

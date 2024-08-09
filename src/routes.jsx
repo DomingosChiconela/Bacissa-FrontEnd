@@ -10,6 +10,7 @@ import { ErrorPage } from "./pages/errorpage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { Users } from "./pages/userpage";
 
 export const route = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ export const route = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "/sing-up",
+    path: "/login/sing-up",
     element: <Register />
   },
   {
@@ -49,4 +50,9 @@ export const route = createBrowserRouter([
     path: "/dashpage",
     element: <ProtectedRoute element={<DashPage />} /> 
   },
+  {
+    path: "/users",
+    element: <ProtectedRoute element={<Users />} /> 
+  },
+ 
 ]);

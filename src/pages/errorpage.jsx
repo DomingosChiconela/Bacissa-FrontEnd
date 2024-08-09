@@ -9,9 +9,15 @@ export const ErrorPage = () => {
       <Header />
       <main className="main ">
         <div className="flex h-[90vh] justify-center items-center flex-col ">
-          <img src="https://www.scopycode.com/includes/images/blog/404_error_page_not_found.gif" alt="Imagem de erro" className="w-[60%] md:w-[50%] lg:w-[40%] xl:w-[30%] 2xl:w-[25%]  " />
+          <img
+            src="https://www.scopycode.com/includes/images/blog/404_error_page_not_found.gif"
+            alt="Imagem de erro"
+            className="w-[60%] md:w-[50%] lg:w-[40%] xl:w-[30%] 2xl:w-[25%]  "
+          />
           <div className="border-b-black flex justify-center flex-col">
-            <strong className="text-7xl flex justify-center lg:text-8xl text-orange-400">OOPS</strong>
+            <strong className="text-7xl flex justify-center lg:text-8xl text-orange-400">
+              OOPS
+            </strong>
             <p className="text-center text-2xl mt-12">Página não encontrada!</p>
             <div className="flex justify-center items-center">
               <button

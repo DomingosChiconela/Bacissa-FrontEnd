@@ -27,7 +27,6 @@ export const Perfil = () => {
   };
 
   const handleSave = (novoNome, novaRegiao, novaImagem) => {
-    // Atualiza os dados no contexto
     updateUser({ name: novoNome, region: novaRegiao, image: novaImagem });
     setPerfilData({ nome: novoNome, regiao: novaRegiao, imagem: novaImagem });
     setIsEditing(false);

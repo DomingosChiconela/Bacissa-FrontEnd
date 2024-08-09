@@ -4,10 +4,13 @@ import { ArrowCircleDown } from "@phosphor-icons/react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import '../animations.css';
 import bgVideo from "../Media/Reciclagem.mp4";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../AuthContext";
 
 export const Welcome = () => {
+    const { user } = useAuth(); 
     const [isMuted, setIsMuted] = useState(true);
-    const [ setIsPlaying] = useState(false);
+    const [setIsPlaying] = useState(false);
     const videoRef = useRef(null);
     const aboutRef = useRef(null);
 
@@ -72,7 +75,7 @@ export const Welcome = () => {
                 observer.unobserve(videoElement);
             }
         };
-    }, );
+    }, []);
 
     return (
         <div className="w-full">
@@ -112,10 +115,20 @@ export const Welcome = () => {
 
                         <button
                             onClick={scrollToAbout}
-                            className="relative mt-6 md:mt-16 xl:mt-32 flex items-center justify-center  w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-blue-600/80 rounded-full shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-110 duration-300"
+                            className="relative mt-6 md:mt-16 xl:mt-32 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-blue-600/80 rounded-full shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-110 duration-300"
                         >
                             <ArrowCircleDown size={32} color="#fff" />
                         </button>
+
+                        {!user && (
+                            <Link to={"/login"}>
+                                <button
+                                    className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                                >
+                                    Iniciar Sessão
+                                </button>
+                            </Link>
+                        )}
                     </motion.div>
                 </div>
             </motion.div>
@@ -127,8 +140,6 @@ export const Welcome = () => {
                 className="bg-gray-100 py-12"
                 ref={aboutRef}
                 id="about-section" 
-
-
             >
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="text-center text-2xl md:text-3xl xl:text-4xl font-bold text-gray-800 mb-8">

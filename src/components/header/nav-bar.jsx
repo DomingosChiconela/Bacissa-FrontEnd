@@ -22,7 +22,7 @@ export const NavBar = () => {
     setIsOpen(false);
   };
 
-  const adMin = false; 
+  const isAdmin = user && user.role === 'admin'; 
   const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
   const inactiveStyles = "text-white hover:text-blue-600 transition-all duration-300 ease-in-out";
 
@@ -61,10 +61,10 @@ export const NavBar = () => {
                   Residuos
                 </NavLink>
               </li>
-              {adMin && (
+              {isAdmin && (
                 <li className="mt-4 md:mt-0">
                   <NavLink
-                    to="/gerir-contas" // Ajuste a rota conforme necessário
+                    to="/users" 
                     className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
                     onClick={toggleMenu}
                   >
@@ -72,15 +72,17 @@ export const NavBar = () => {
                   </NavLink>
                 </li>
               )}
-              <li className="mt-4 md:mt-0">
-                <NavLink
-                  to="/chats"
-                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
-                  onClick={toggleMenu}
-                >
-                  Conversas
-                </NavLink>
-              </li>
+              {!isAdmin && (
+                <li className="mt-4 md:mt-0">
+                  <NavLink
+                    to="/chats"
+                    className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
+                    onClick={toggleMenu}
+                  >
+                    Conversas
+                  </NavLink>
+                </li>
+              )}
               <li className="mt-4 md:mt-0">
                 <NavLink
                   to="/dashpage"
@@ -107,15 +109,14 @@ export const NavBar = () => {
                   {`Olá, ${user.name}`}
                 </span>
 
-               
                 {showLogoutPopup && (
                   <div className="absolute md:right-0 w-36 text-xl 2xl:text-2xl  mt-8 md:w-48 bg-slate-200/90 rounded-md shadow-lg z-30">
-                    <div className="px-4 py-2   text-center">
+                    <div className="px-4 py-2 text-center">
                       <p className="text-gray-800">Você deseja terminar a sessão?</p>
                       <div className="flex justify-between mt-2">
                         <button 
                           onClick={handleLogout} 
-                          className="text-blue-600  hover:text-blue-800"
+                          className="text-blue-600 hover:text-blue-800"
                         >
                           Sim
                         </button>
@@ -130,7 +131,6 @@ export const NavBar = () => {
                   </div>
                 )}
               </li>
-              
             </>
           )}
 

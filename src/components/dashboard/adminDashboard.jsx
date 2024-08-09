@@ -2,7 +2,6 @@ import React from 'react';
 import { Line as LineChart, Bar as BarChart, Pie as PieChart } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, PointElement, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
 
-// Registre os componentes necessários do Chart.js
 ChartJS.register(
   Title, Tooltip, Legend,
   LineElement, PointElement,
@@ -11,7 +10,6 @@ ChartJS.register(
   ArcElement
 );
 
-// Dados para o gráfico de barras (Novas Propostas e Publicações Feitas)
 const newBarData = {
   labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
   datasets: [
@@ -32,7 +30,6 @@ const newBarData = {
   ]
 };
 
-// Dados para o gráfico de linhas (Desempenho Mensal)
 const newLineData = {
   labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
   datasets: [
@@ -47,7 +44,6 @@ const newLineData = {
   ]
 };
 
-// Dados para o gráfico de pizza (Distribuição de Recursos)
 const newPieData = {
   labels: ['Segmento A', 'Segmento B', 'Segmento C', 'Segmento D'],
   datasets: [
@@ -65,7 +61,6 @@ const newPieData = {
   ]
 };
 
-// Dados para uma tabela de resumo
 const adminSummaryData = [
   { label: 'Usuários Registrados', value: '2000' },
   { label: 'Tarefas Pendentes', value: '50' },
@@ -96,7 +91,6 @@ export const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* Tabela de Resumo */}
       <div className="bg-white shadow-md rounded-lg p-4">
         <h2 className="text-lg lg:text-2xl font-semibold mb-4 text-center">Resumo Administrativo</h2>
         <table className="min-w-full divide-y divide-gray-200">

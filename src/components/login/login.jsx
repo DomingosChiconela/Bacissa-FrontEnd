@@ -15,17 +15,29 @@ export const LoginForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [isAdmin, setIsAdmin] = useState(false); 
 
-  const adminCredentials = {
-    email: "sbsbadroo@gmail.com", 
-    password: "novaPass8",
-  };
+  const adminCredentials = [
+    {
+      email: "sbsbadroo@gmail.com", 
+      password: "novaPass8",
+    },
+    {
+      email: "",
+      password: "",
+    },
+    {
+      email: "admin2@example.com",
+      password: "password2",
+    },
+  ];
 
   const onSubmit = (data) => {
     console.log("User Data:", data);
 
-    if (data.email === adminCredentials.email && data.password === adminCredentials.password) {
+    const admin = adminCredentials.find(admin => admin.email === data.email && admin.password === data.password);
+
+    if (admin) {
       setIsAdmin(true); 
-      login({ name: "Admin", email: data.email, role: "admin" }); 
+      login({ name: "Admin", email: admin.email, role: "admin" }); 
     } else {
       login({ name: data.name, email: data.email }); 
     }
@@ -113,7 +125,7 @@ export const LoginForm = () => {
             >
               Login
             </button>
-            <Link to={"/sign-up"}>
+            <Link to={"/login/sing-up"}>
               <button
                 type="button"
                 className="w-full py-2 rounded mt-4 transition duration-300"
@@ -125,7 +137,6 @@ export const LoginForm = () => {
         </motion.div>
       </div>
 
-     
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
