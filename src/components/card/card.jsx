@@ -64,25 +64,14 @@ export const Cards = () => {
     console.log("OLA")
     if (file) {
       mpfm.append("post", file)
-      // const res = await fetch("/api/post/image", {
-      //   method: "PUT",
-      //   body: mpfm
-      // })
+   
      const res =  await httpClient.post("/api/post/image",mpfm)
       if (res.status === 200) {
         const body =  res.data
         setForm(previousForm => ({...previousForm, image: body.data}))
         console.log(body)
       }
-      // const reader = new FileReader();
-      // reader.onloadend = () => {
-      //   setImagePreview(reader.result);
-      //   setForm({
-      //     ...form,
-      //     // image: reader.result,
-      //   });
-      // };
-      // reader.readAsDataURL(file);
+      
     }
   };
 
