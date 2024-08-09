@@ -12,6 +12,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { ForgetPage } from "./pages/forgetpass";
 import { Users } from "./pages/userpage";
+import { RedifinirPage } from "./pages/redpage";
 
 export const route = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const route = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/login/forgotpass/redifinir",
+    element: <RedifinirPage />
   },
   {
     path: "/login/forgotpass",
