@@ -10,6 +10,7 @@ import { ErrorPage } from "./pages/errorpage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { ForgetPage } from "./pages/forgetpass";
 
 export const route = createBrowserRouter([
   {
@@ -34,7 +35,11 @@ export const route = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "/sing-up",
+    path: "/login/forgotpass",
+    element: <ForgetPage />
+  },
+  {
+    path: "/singup",
     element: <Register />
   },
   {

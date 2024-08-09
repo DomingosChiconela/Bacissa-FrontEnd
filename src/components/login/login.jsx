@@ -43,12 +43,12 @@ export const LoginForm = () => {
   return (
     <div>
       <Header />
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-green-400 to-green-400">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-80 md:w-full max-w-lg p-6 bg-white rounded-lg shadow-md"
+          className="w-80 md:w-full max-w-lg p-6 bg-white rounded-lg shadow-2xl"
         >
           <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">Bacissa</h1>
           <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">Login</h2>
@@ -107,16 +107,20 @@ export const LoginForm = () => {
                 <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
               )}
             </div>
+            <Link to={"/login/forgotpass"}>
+            <div className="text-black-600 hover:text-green-600 hover:underline mt-1">
+              Esqueci-me da Password
+              </div></Link>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600 transition duration-300"
+              className="w-full bg-green-500 text-white py-2 rounded mt-4 hover:bg-green-600 transition duration-300"
             >
               Login
             </button>
-            <Link to={"/sign-up"}>
+            <Link to={"/signup"}>
               <button
                 type="button"
-                className="w-full py-2 rounded mt-4 transition duration-300"
+                className="w-full py-2  hover:text-green-900/90 rounded mt-4 transition duration-300"
               >
                 Criar conta
               </button>

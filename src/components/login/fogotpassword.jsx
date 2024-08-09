@@ -19,7 +19,7 @@ export const PasswordRecoveryForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500 min-h-screen">
+    <div className="bg-gradient-to-r from-green-300 via-green-400 to-green-400 min-h-screen">
       <Header />
       <div className="flex items-center justify-center min-h-screen">
         <motion.div
@@ -60,14 +60,13 @@ export const PasswordRecoveryForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600 transition duration-300"
+              className="w-full bg-green-500 text-white py-2 rounded mt-4 hover:bg-green-600 transition duration-300"
             >
               Enviar
             </button>
           </form>
         </motion.div>
       </div>
-      <Footer />
     </div>
   );
 };
