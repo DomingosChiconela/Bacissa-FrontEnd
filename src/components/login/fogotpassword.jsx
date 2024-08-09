@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../header";
-import { Footer } from "../header/footer";
 
 export const PasswordRecoveryForm = () => {
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ export const PasswordRecoveryForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-green-300 via-green-400 to-green-400 min-h-screen">
+    <div className="bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-2xl min-h-screen">
       <Header />
       <div className="flex items-center justify-center min-h-screen">
         <motion.div

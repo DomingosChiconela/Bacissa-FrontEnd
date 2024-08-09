@@ -103,7 +103,7 @@ export const NavBar = () => {
               </li>
               <li className="mt-4 md:mt-0 relative">
                 <span 
-                  className="bg-blue-600 text-white rounded-md px-3 py-1 font-semibold shadow-md cursor-pointer"
+                  className="bg-green-600 text-white rounded-md px-3 py-1 font-semibold shadow-md cursor-pointer"
                   onClick={() => setShowLogoutPopup(!showLogoutPopup)} 
                 >
                   {`Olá, ${user.name}`}
@@ -140,7 +140,7 @@ export const NavBar = () => {
                 <NavLink
                   to="/login"
                   exact
-                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-green-500 justify-center text-center relative sm:w-28`}
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-green-400 justify-center text-center relative sm:w-28`}
                   onClick={toggleMenu}
                 >
                   Iniciar Sessão

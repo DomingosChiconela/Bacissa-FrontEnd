@@ -55,7 +55,7 @@ export const LoginForm = () => {
   return (
     <div>
       <Header />
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-green-400 to-green-400">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-2xl">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,24 +65,7 @@ export const LoginForm = () => {
           <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">Bacissa</h1>
           <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-gray-700">Nome</label>
-              <input
-                type="text"
-                id="name"
-                {...register("name", {
-                  required: "Nome é obrigatório",
-                  minLength: {
-                    value: 3,
-                    message: "Nome deve ter mais de 2 letras",
-                  },
-                })}
-                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
-              )}
-            </div>
+           
             <div>
               <label htmlFor="email" className="block text-gray-700">Email</label>
               <input
