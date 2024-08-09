@@ -38,7 +38,7 @@ export const RedmSenha = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label htmlFor="password" className="block text-gray-700">
-              Password
+              Nova Password
             </label>
             <input
               type="password"
