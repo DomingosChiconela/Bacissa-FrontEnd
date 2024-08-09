@@ -23,8 +23,8 @@ export const NavBar = () => {
   };
 
   const isAdmin = user && user.role === 'admin'; 
-  const activeStyles = "text-blue-600 hover:text-blue-400 transition-all duration-300 ease-in-out";
-  const inactiveStyles = "text-white hover:text-blue-600 transition-all duration-300 ease-in-out";
+  const activeStyles = "text-green-400 hover:text-green-300 transition-all duration-300 ease-in-out";
+  const inactiveStyles = "text-white hover:text-green-400 transition-all duration-300 ease-in-out";
 
   const handleLogout = () => {
     logout(); 
@@ -32,7 +32,7 @@ export const NavBar = () => {
   };
 
   return (
-    <nav className="p-4 shadow-lg relative">
+    <nav className="p-4  relative">
       <div className="container mx-auto flex justify-between items-center">
         <div className="md:hidden text-white cursor-pointer" onClick={toggleMenu}>
           <FaBars size={20} />
@@ -140,7 +140,7 @@ export const NavBar = () => {
                 <NavLink
                   to="/login"
                   exact
-                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-blue-500/50 justify-center text-center relative sm:w-28`}
+                  className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles} sm:flex rounded-xl py-1 shadow-sm shadow-green-500 justify-center text-center relative sm:w-28`}
                   onClick={toggleMenu}
                 >
                   Iniciar Sessão

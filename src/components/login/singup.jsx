@@ -15,12 +15,12 @@ export const RegisterForm = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
   const onSubmit = async (data) => {
     console.log("User Registration Data:", data);
 
     try {
-      // Integrar api aqui boss nao sei se esta bem mas tentei
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,10 +51,18 @@ export const RegisterForm = () => {
     setIsErrorModalOpen(false);
   };
 
+  const openTermsModal = () => {
+    setIsTermsModalOpen(true);
+  };
+
+  const closeTermsModal = () => {
+    setIsTermsModalOpen(false);
+  };
+
   return (
     <div className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500 min-h-screen">
       <Header />
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen sm:h-[120vh]">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -138,22 +146,57 @@ export const RegisterForm = () => {
               )}
             </div>
             <div>
-              <label htmlFor="region" className="block text-gray-700">Região</label>
+              <label htmlFor="province" className="block text-gray-700">Província</label>
               <input
                 type="text"
-                id="region"
-                placeholder="Digite sua região"
-                {...register("region", {
-                  required: "Região é obrigatória",
+                id="province"
+                placeholder="Digite sua província"
+                {...register("province", {
+                  required: "Província é obrigatória",
                   minLength: {
                     value: 3,
-                    message: "Região deve ter mais de 2 letras",
+                    message: "Província deve ter mais de 2 letras",
                   },
                 })}
                 className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"
               />
-              {errors.region && (
-                <p className="text-red-500 text-sm mt-1">{errors.region.message}</p>
+              {errors.province && (
+                <p className="text-red-500 text-sm mt-1">{errors.province.message}</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="district" className="block text-gray-700">Distrito</label>
+              <input
+                type="text"
+                id="district"
+                placeholder="Digite seu distrito"
+                {...register("district", {
+                  required: "Distrito é obrigatório",
+                  minLength: {
+                    value: 3,
+                    message: "Distrito deve ter mais de 2 letras",
+                  },
+                })}
+                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"
+              />
+              {errors.district && (
+                <p className="text-red-500 text-sm mt-1">{errors.district.message}</p>
+              )}
+            </div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="terms"
+                {...register("terms", {
+                  required: "Você deve aceitar os termos de uso",
+                })}
+                className="mr-2"
+              />
+              <label htmlFor="terms" className="text-gray-700">
+                Aceito os <button type="button" onClick={openTermsModal} className="text-blue-600 hover:underline">termos de uso</button>
+              </label>
+              {errors.terms && (
+                <p className="text-red-500 text-sm mt-1">{errors.terms.message}</p>
               )}
             </div>
             <button
@@ -166,6 +209,7 @@ export const RegisterForm = () => {
         </motion.div>
       </div>
 
+      {/* Success Modal */}
       <Modal
         isOpen={isSuccessModalOpen}
         onRequestClose={closeSuccessModal}
@@ -184,6 +228,7 @@ export const RegisterForm = () => {
         </div>
       </Modal>
 
+      {/* Error Modal */}
       <Modal
         isOpen={isErrorModalOpen}
         onRequestClose={closeErrorModal}
@@ -196,6 +241,36 @@ export const RegisterForm = () => {
           <button
             onClick={closeErrorModal}
             className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300"
+          >
+            Fechar
+          </button>
+        </div>
+      </Modal>
+
+      {/* Terms Modal */}
+      <Modal
+        isOpen={isTermsModalOpen}
+        onRequestClose={closeTermsModal}
+        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+        overlayClassName="fixed inset-0"
+      >
+        <div className="bg-white p-6 rounded-lg shadow-lg   md:max-w-lg">
+          <h2 className="text-xl font-bold text-blue-600 mb-4">Termos de Uso</h2>
+          <div className="space-y-4">
+            <p><strong>Bem-vindo à nossa plataforma!</strong></p>
+            <p>Estes termos de uso regulam o uso da nossa plataforma e serviços. Ao utilizar nossos serviços, você concorda com os seguintes termos:</p>
+            <ul className="list-disc pl-5">
+              <li><strong>1. Aceitação dos Termos</strong> - Ao utilizar nossa plataforma, você concorda com os termos e condições descritos neste documento.</li>
+              <li><strong>2. Uso da Plataforma</strong> - Você concorda em usar a plataforma apenas para fins legais e de acordo com todas as leis aplicáveis.</li>
+              <li><strong>3. Responsabilidades do Usuário</strong> - É sua responsabilidade manter a confidencialidade de suas informações de conta e senha.</li>
+              <li><strong>4. Modificações dos Termos</strong> - Podemos alterar estes termos a qualquer momento. As alterações serão publicadas nesta página.</li>
+              <li><strong>5. Contato</strong> - Para dúvidas ou informações adicionais, entre em contato conosco pelo e-mail fornecido na plataforma.</li>
+            </ul>
+            <p>Para uma leitura completa dos nossos termos de uso, por favor, acesse nossa página de <a href="/termos" className="text-blue-600 hover:underline">Termos de Uso</a>.</p>
+          </div>
+          <button
+            onClick={closeTermsModal}
+            className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
           >
             Fechar
           </button>
