@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardFt from '../Media/foto.jpeg';
 import { NumberFormatBase } from 'react-number-format';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Trash } from '@phosphor-icons/react';
 import { useAuth } from '../../AuthContext';
+import { httpClient } from '../../axios/axios';
 
 const isSafari = () => {
   const userAgent = window.navigator.userAgent.toLowerCase();
@@ -13,41 +14,18 @@ const isSafari = () => {
 
 export const Cards = () => {
   const { user } = useAuth();
+  
 
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      category: 'Vidro',
-      price: '200',
-      quantity: '10',
-      location: 'Maputo',
-      image: CardFt,
-    },
-    {
-      id: 2,
-      category: 'Plastico',
-      price: '200',
-      quantity: '5',
-      location: 'Matola',
-      image: CardFt,
-    },
-    {
-      id: 3,
-      category: 'Garrafa',
-      price: '50',
-      quantity: '20',
-      location: 'Marracuene',
-      image: CardFt,
-    },
-    {
-      id: 4,
-      category: 'Tigelas',
-      price: '100',
-      quantity: '30',
-      location: 'Bobole',
-      image: CardFt,
-    },
-  ]);
+  const [cards, setCards] = useState([]);
+  const [categoria, setcategoria] = useState([]);
+ const config ={ headers :{Authorization :`Bearer ${localStorage.getItem('token')}`}}
+  useEffect(()=>{
+     httpClient.get('/api/post/').then((response)=>{
+      setCards(response.data.data)
+     }).catch((error)=>{
+      console.log("deu erro")
+     })
+  }, [])
 
   const [form, setForm] = useState({
     category: '',
@@ -62,6 +40,7 @@ export const Cards = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardToRemove, setCardToRemove] = useState(null);
+
 
   const categories = [
     'Vidro',
@@ -79,18 +58,31 @@ export const Cards = () => {
     });
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
+    const mpfm = new FormData()
+    console.log("OLA")
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-        setForm({
-          ...form,
-          image: reader.result,
-        });
-      };
-      reader.readAsDataURL(file);
+      mpfm.append("post", file)
+      // const res = await fetch("/api/post/image", {
+      //   method: "PUT",
+      //   body: mpfm
+      // })
+     const res =  await httpClient.post("/api/post/image",mpfm)
+      if (res.status === 200) {
+        const body =  res.data
+        setForm(previousForm => ({...previousForm, image: body.data}))
+        console.log(body)
+      }
+      // const reader = new FileReader();
+      // reader.onloadend = () => {
+      //   setImagePreview(reader.result);
+      //   setForm({
+      //     ...form,
+      //     // image: reader.result,
+      //   });
+      // };
+      // reader.readAsDataURL(file);
     }
   };
 
@@ -101,17 +93,12 @@ export const Cards = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
-    const newCardWithId = {
-      ...form,
-      id: cards.length + 1,
-    };
-    const updatedCards = [newCardWithId, ...cards].sort((a, b) => b.id - a.id);
-    setCards(updatedCards);
-    setForm({ category: '', price: '', quantity: '', location: '', image: null });
-    setImagePreview(null);
-    setIsFormOpen(false);
+    const formData = new FormData();
+   
+  const res= await httpClient.post("/api/post/",formData,{ headers :{Authorization :`Bearer ${localStorage.getItem('token')}`}})
+    
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 3000);
   };
@@ -239,6 +226,7 @@ export const Cards = () => {
                 <button
                   type="submit"
                   className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                
                 >
                   Adicionar
                 </button>

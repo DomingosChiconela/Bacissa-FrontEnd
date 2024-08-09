@@ -5,6 +5,8 @@ import { Header } from "../header";
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { useAuth } from "../../AuthContext";
+import axios from "axios";
+import { httpClient } from "../../axios/axios";
 
 Modal.setAppElement('#root');
 
@@ -21,13 +23,9 @@ export const RegisterForm = () => {
     console.log("User Registration Data:", data);
 
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
+      const response = await httpClient.post('/api/auth/signup',data)
+      alert(response.data.message)
+      if ( response.status !=201) {
         throw new Error("Erro ao registrar usuário");
       }
 

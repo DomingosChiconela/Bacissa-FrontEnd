@@ -17,6 +17,7 @@
     "@mui/material": "^5.16.6",
     "@phosphor-icons/react": "^2.1.7",
     "@react-google-maps/api": "^2.19.3",
+    "axios": "^1.7.3",
     "chart.js": "^4.4.3",
     "framer-motion": "^11.3.24",
     "gitignore": "^0.7.0",

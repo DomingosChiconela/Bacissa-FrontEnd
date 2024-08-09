@@ -20,11 +20,11 @@ export const route = createBrowserRouter([
   },
   {
     path: "/residuos",
-    element: <ProtectedRoute element={<Residuos />} /> 
+    element:<Residuos /> 
   },
   {
     path: "/residuos/:id",
-    element: <ProtectedRoute element={<Details />} /> 
+    element:<Details /> 
   },
   {
     path: "/profile",

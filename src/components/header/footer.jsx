@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center items-center bg-green-950 text-white text-xs md:text-base p-2  md:p-2 pt-0">
+    <footer className="flex flex-col justify-center items-center bg-green-nevon text-white text-xs md:text-base p-2  md:p-2 pt-0">
       <aside className="text-center mb-2">
         <img
           src="https://cdn-icons-png.flaticon.com/512/1286/1286209.png"

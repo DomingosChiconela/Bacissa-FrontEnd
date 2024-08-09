@@ -49,10 +49,7 @@ export const NavBar = () => {
           >
             <FaTimes size={25} />
           </button>
-
-          {user && ( 
-            <>
-              <li className="mt-4 md:mt-0">
+          <li className="mt-4 md:mt-0">
                 <NavLink
                   to="/residuos"
                   className={({ isActive }) => `${isActive ? activeStyles : inactiveStyles}`}
@@ -61,6 +58,9 @@ export const NavBar = () => {
                   Residuos
                 </NavLink>
               </li>
+          {user && ( 
+            <>
+              
               {isAdmin && (
                 <li className="mt-4 md:mt-0">
                   <NavLink
