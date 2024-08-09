@@ -60,7 +60,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500 min-h-screen">
+    <div className="bg-gradient-to-r from-green-300 via-green-400 to-green-400 min-h-screen">
       <Header />
       <div className="flex items-center justify-center min-h-screen sm:h-[120vh]">
         <motion.div
